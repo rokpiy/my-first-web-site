@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나트랑 여행 핸드북 - 맛집 & 힐링 가이드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+
+        .trip-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-button {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tab-content h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            border-bottom: 3px solid #e74c3c;
+            padding-bottom: 10px;
+        }
+
+        .day-schedule {
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+        }
+
+        .day-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .day-number {
+            background: #3498db;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .schedule-item {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #e74c3c;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            background: #e8f4fd;
+            transform: translateX(5px);
+        }
+
+        .time {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 5px;
+        }
+
+        .restaurant-card {
+            background: #f8f9fa;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #27ae60;
+            transition: all 0.3s ease;
+        }
+
+        .restaurant-card:hover {
+            background: #e8f5e8;
+            transform: translateX(5px);
+        }
+
+        .restaurant-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .restaurant-info {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .recommended-menu {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 3px solid #ffc107;
+        }
+
+        .attraction-card {
+            background: #f8f9fa;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #9b59b6;
+            transition: all 0.3s ease;
+        }
+
+        .attraction-card:hover {
+            background: #f3e5f5;
+            transform: translateX(5px);
+        }
+
+        .attraction-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #9b59b6;
+            margin-bottom: 10px;
+        }
+
+        .hotel-card {
+            background: #f8f9fa;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #f39c12;
+            transition: all 0.3s ease;
+        }
+
+        .hotel-card:hover {
+            background: #fef9e7;
+            transform: translateX(5px);
+        }
+
+        .hotel-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #f39c12;
+            margin-bottom: 10px;
+        }
+
+        .massage-card {
+            background: #f8f9fa;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #e91e63;
+            transition: all 0.3s ease;
+        }
+
+        .massage-card:hover {
+            background: #fce4ec;
+            transform: translateX(5px);
+        }
+
+        .massage-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #e91e63;
+            margin-bottom: 10px;
+        }
+
+        .phrase-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .korean {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .vietnamese {
+            color: #17a2b8;
+            font-style: italic;
+        }
+
+        .tip-item {
+            background: #d1ecf1;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #17a2b8;
+        }
+
+        .budget-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .budget-table th,
+        .budget-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .budget-table th {
+            background: #3498db;
+            color: white;
+        }
+
+        .budget-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .map-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .map-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏖️ 나트랑 여행 핸드북</h1>
+            <p>베트남 나트랑 4박 5일 커플 여행 가이드 - 맛집 & 힐링 중심</p>
+        </div>
+
+        <div class="trip-info">
+            <div class="info-card">
+                <h3>여행 기간</h3>
+                <p>4박 5일</p>
+            </div>
+            <div class="info-card">
+                <h3>여행 인원</h3>
+                <p>2명 (커플)</p>
+            </div>
+            <div class="info-card">
+                <h3>총 예산</h3>
+                <p>4,000,000원</p>
+            </div>
+            <div class="info-card">
+                <h3>여행 테마</h3>
+                <p>휴식 & 힐링</p>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="showTab('schedule')">📅 여행 일정</button>
+            <button class="tab-button" onclick="showTab('restaurants')">🍽️ 맛집</button>
+            <button class="tab-button" onclick="showTab('attractions')">🏛️ 관광지</button>
+            <button class="tab-button" onclick="showTab('hotels')">🏨 숙박</button>
+            <button class="tab-button" onclick="showTab('massage')">💆 마사지</button>
+            <button class="tab-button" onclick="showTab('vietnamese')">💬 베트남어</button>
+            <button class="tab-button" onclick="showTab('tips')">💡 여행 팁</button>
+            <button class="tab-button" onclick="showTab('budget')">💰 예산</button>
+            <button class="tab-button" onclick="showTab('map')">🗺️ 지도</button>
+        </div>
+
+        <!-- 여행 일정 탭 -->
+        <div id="schedule" class="tab-content active">
+            <h2>📅 상세 여행 일정</h2>
+            
+            <div class="day-schedule">
+                <div class="day-title">
+                    <div class="day-number">1</div>
+                    월요일 - 도착 및 시내 숙박
+                </div>
+                <div class="schedule-item">
+                    <div class="time">23:00</div>
+                    나트랑 깜란 국제공항(CXR) 도착
+                </div>
+                <div class="schedule-item">
+                    <div class="time">23:00 - 00:30</div>
+                    입국 심사, 수하물 수령, 유심 구매 및 환전
+                </div>
+                <div class="schedule-item">
+                    <div class="time">00:30 - 01:30</div>
+                    공항에서 시내 호텔로 이동 (택시 또는 그랩 이용)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">01:30 - 02:00</div>
+                    시내 호텔 체크인 및 짐 정리
+                </div>
+                <div class="schedule-item">
+                    <div class="time">02:00 - 취침</div>
+                    휴식 및 다음 날을 위한 에너지 충전
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-title">
+                    <div class="day-number">2</div>
+                    화요일 - 시내 관광 및 혼총 보마리조트 이동
+                </div>
+                <div class="schedule-item">
+                    <div class="time">09:00 - 10:00</div>
+                    시내 호텔 조식 및 체크아웃
+                </div>
+                <div class="schedule-item">
+                    <div class="time">10:00 - 12:00</div>
+                    나트랑 대성당 방문 (고딕 양식 건축물)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">12:00 - 13:00</div>
+                    점심 식사 - 마담프엉 (베트남 현지식, 분짜, 반쎄오 추천)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">13:00 - 14:00</div>
+                    롱선사 방문 (거대한 좌불상이 있는 사원)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">14:00 - 15:00</div>
+                    시내에서 혼총 보마리조트로 이동
+                </div>
+                <div class="schedule-item">
+                    <div class="time">15:00 - 18:00</div>
+                    보마리조트 체크인 및 리조트 시설 즐기기 (수영, 휴식)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">18:00 - 19:30</div>
+                    저녁 식사 - 보마리조트 내 레스토랑 또는 동호콴 배달
+                </div>
+                <div class="schedule-item">
+                    <div class="time">19:30 - 21:00</div>
+                    💆 마사지 (보마리조트 근처 또는 시내 마사지샵)
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-title">
+                    <div class="day-number">3</div>
+                    수요일 - 혼총 보마리조트 휴식 및 미식 탐방
+                </div>
+                <div class="schedule-item">
+                    <div class="time">09:00 - 10:00</div>
+                    보마리조트 조식
+                </div>
+                <div class="schedule-item">
+                    <div class="time">10:00 - 13:00</div>
+                    보마리조트 시설 즐기기 (수영, 프라이빗 비치, 스파)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">13:00 - 14:00</div>
+                    점심 식사 - 보마리조트 룸서비스 또는 혼총 지역 맛집
+                </div>
+                <div class="schedule-item">
+                    <div class="time">14:00 - 17:00</div>
+                    자유 시간 (리조트 내 휴식, 혼총 곶 산책)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">17:00 - 18:00</div>
+                    시내로 이동
+                </div>
+                <div class="schedule-item">
+                    <div class="time">18:00 - 19:30</div>
+                    저녁 식사 - 코스타시푸드 (고급 해산물) 또는 촌촌킴 (베트남 가정식)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">19:30 - 21:00</div>
+                    💆 마사지 (시내 유명 마사지샵)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">21:00 - 취침</div>
+                    시내 쇼핑 또는 콩카페 방문 후 리조트로 복귀
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-title">
+                    <div class="day-number">4</div>
+                    목요일 - 빈원더스 또는 해변 휴식 및 마지막 만찬
+                </div>
+                <div class="schedule-item">
+                    <div class="time">09:00 - 10:00</div>
+                    보마리조트 조식
+                </div>
+                <div class="schedule-item">
+                    <div class="time">10:00 - 17:00</div>
+                    옵션 1: 빈원더스 나트랑 (테마파크) 또는 옵션 2: 바이 다이 해변 (조용한 휴식)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">17:00 - 18:00</div>
+                    리조트로 복귀 및 휴식
+                </div>
+                <div class="schedule-item">
+                    <div class="time">18:00 - 19:30</div>
+                    저녁 식사 - 하껌까 (베트남식 닭고기밥) 또는 반미판 (반미 맛집)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">19:30 - 21:00</div>
+                    💆 마사지 (선호하는 마사지샵)
+                </div>
+                <div class="schedule-item">
+                    <div class="time">21:00 - 23:00</div>
+                    쇼핑 및 기념품 구매 (나트랑 야시장 또는 롯데마트)
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <div class="day-title">
+                    <div class="day-number">5</div>
+                    금요일 - 출국
+                </div>
+                <div class="schedule-item">
+                    <div class="time">00:00</div>
+                    보마리조트 체크아웃
+                </div>
+                <div class="schedule-item">
+                    <div class="time">00:00 - 01:00</div>
+                    보마리조트에서 깜란 국제공항으로 이동
+                </div>
+                <div class="schedule-item">
+                    <div class="time">01:00 - 02:00</div>
+                    공항 도착 및 출국 수속
+                </div>
+                <div class="schedule-item">
+                    <div class="time">02:05</div>
+                    ✈️ 나트랑 깜란 국제공항 출발
+                </div>
+            </div>
+        </div>
+
+        <!-- 맛집 탭 -->
+        <div id="restaurants" class="tab-content">
+            <h2>🍽️ 나트랑 추천 맛집</h2>
+            
+            <div class="restaurant-card">
+                <div class="restaurant-name">마담프엉 (Madam Phuong)</div>
+                <div class="restaurant-info">
+                    <strong>위치:</strong> 34f Nguyễn Thiện Thuật, Tân Lập, Nha Trang<br>
+                    <strong>영업시간:</strong> 매일 11:00~22:00<br>
+                    <strong>특징:</strong> 나트랑 시내에 위치한 한국인 필수 맛집. 웨이팅이 길 수 있음.
+                </div>
+                <div class="recommended-menu">
+                    <strong>추천 메뉴:</strong> 분짜 하노이, 반쎄오, 새우를 곁들인 구운 돼지고기 볶음밥, 쌀국수, 모닝 글로리
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">촌촌킴 (Chon Chon Kim)</div>
+                <div class="restaurant-info">
+                    <strong>위치:</strong> 89 Đ. Hoàng Hoa Thám, Lộc Thọ, Nha Trang<br>
+                    <strong>영업시간:</strong> 매일 10:30~21:00<br>
+                    <strong>특징:</strong> 인터콘티넨탈 호텔, 쉐라톤 호텔 근처. 밥 무료 제공.
+                </div>
+                <div class="recommended-menu">
+                    <strong>추천 메뉴:</strong> 모닝글로리, 소고기 볶음면
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">코스타시푸드 (Costa Seafood)</div>
+                <div class="restaurant-info">
+                    <strong>위치:</strong> 32-34 Trần Phú, Lộc Thọ, Nha Trang<br>
+                    <strong>영업시간:</strong> 매일 10:00~22:00<br>
+                    <strong>특징:</strong> 인터컨티넨탈 호텔 아래 위치한 고급 시푸드 전문점. 인터컨티넨탈 호텔 숙박객은 10% 할인.
+                </div>
+                <div class="recommended-menu">
+                    <strong>추천 메뉴:</strong> 다양한 신선한 해산물 요리
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">하껌까 (Ha Com Ga)</div>
+                <div class="restaurant-info">
+                    <strong>위치:</strong> 75 Ng. Gia Tự, Phước Tiến, Nha Trang<br>
+                    <strong>영업시간:</strong> 매일 09:00~21:00<br>
+                    <strong>특징:</strong> 로컬 분위기를 느낄 수 있는 껌가(베트남식 닭고기밥) 전문점.
+                </div>
+                <div class="recommended-menu">
+                    <strong>추천 메뉴:</strong> 껌가 (닭고기밥)
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">반미판 (Banh Mi Phan)</div>
+                <div class="restaurant-info">
+                    <strong>위치:</strong> 118 Hoàng Hoa Thám, Lộc Thọ, Nha Trang<br>
+                    <strong>영업시간:</strong> 매일 06:00~21:00<br>
+                    <strong>특징:</strong> 나트랑에서 유명한 반미 맛집. 저렴한 가격에 맛있는 반미.
+                </div>
+                <div class="recommended-menu">
+                    <strong>추천 메뉴:</strong> 반미
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-name">콩카페 (Cong Cafe)</div>
+                <div class="restaurant-info">
+                    <strong>위치:</strong> 나트랑 시내 여러 지점<br>
+                    <strong>영업시간:</strong> 매일 07:00~23:00<br>
+                    <strong>특징:</strong> 베트남 대표적인 프랜차이즈 카페.
+                </div>
+                <div class="recommended-menu">
+                    <strong>추천 메뉴:</strong> 코코넛 커피 스무디
+                </div>
+            </div>
+        </div>
+
+        <!-- 관광지 탭 -->
+        <div id="attractions" class="tab-content">
+            <h2>🏛️ 나트랑 주요 관광지</h2>
+            
+            <div class="attraction-card">
+                <div class="attraction-name">나트랑 대성당 (Nha Trang Cathedral)</div>
+                <p><strong>특징:</strong> 프랑스 식민지 시대에 건설된 고딕 양식의 아름다운 성당. 시내 중심에 위치하여 접근성이 좋습니다.</p>
+                <p><strong>방문 시간:</strong> 30분 - 1시간</p>
+                <p><strong>입장료:</strong> 무료</p>
+            </div>
+
+            <div class="attraction-card">
+                <div class="attraction-name">롱선사 (Long Son Pagoda)</div>
+                <p><strong>특징:</strong> 거대한 흰색 좌불상이 유명한 사원. 시내 서쪽 언덕에 위치하여 나트랑 시내를 한눈에 볼 수 있습니다.</p>
+                <p><strong>방문 시간:</strong> 1시간 - 1시간 30분</p>
+                <p><strong>입장료:</strong> 무료</p>
+            </div>
+
+            <div class="attraction-card">
+                <div class="attraction-name">포나가르 참 타워 (Po Nagar Cham Towers)</div>
+                <p><strong>특징:</strong> 7-12세기에 건설된 참족의 힌두교 사원. 나트랑의 대표적인 역사 유적지입니다.</p>
+                <p><strong>방문 시간:</strong> 1시간</p>
+                <p><strong>입장료:</strong> 22,000동 (약 1,200원)</p>
+            </div>
+
+            <div class="attraction-card">
+                <div class="attraction-name">빈원더스 나트랑 (VinWonders Nha Trang)</div>
+                <p><strong>특징:</strong> 혼트레 섬에 위치한 대형 테마파크. 케이블카를 타고 이동하며, 다양한 놀이기구와 워터파크를 즐길 수 있습니다.</p>
+                <p><strong>방문 시간:</strong> 하루 종일</p>
+                <p><strong>입장료:</strong> 약 800,000동 (약 43,000원)</p>
+            </div>
+
+            <div class="attraction-card">
+                <div class="attraction-name">바이 다이 해변 (Bai Dai Beach)</div>
+                <p><strong>특징:</strong> 나트랑에서 가장 아름답고 한적한 해변 중 하나. 조용한 휴식을 원하는 커플에게 추천합니다.</p>
+                <p><strong>방문 시간:</strong> 2-3시간</p>
+                <p><strong>입장료:</strong> 무료</p>
+            </div>
+
+            <div class="attraction-card">
+                <div class="attraction-name">혼총 곶 (Hon Chong Promontory)</div>
+                <p><strong>특징:</strong> 독특한 바위 형성물과 아름다운 바다 전망을 자랑하는 명소. 보마리조트 근처에 위치합니다.</p>
+                <p><strong>방문 시간:</strong> 1시간</p>
+                <p><strong>입장료:</strong> 무료</p>
+            </div>
+        </div>
+
+        <!-- 숙박 탭 -->
+        <div id="hotels" class="tab-content">
+            <h2>🏨 추천 숙박시설</h2>
+            
+            <div class="hotel-card">
+                <div class="hotel-name">아다마스 부티크 호텔 나트랑 (1일차 시내 숙박)</div>
+                <p><strong>위치:</strong> 나트랑 시내 중심</p>
+                <p><strong>특징:</strong> 나트랑 야시장 도보 8분, 바다 및 시내 전망 훌륭, 21층 루프탑 수영장</p>
+                <p><strong>투숙객 평점:</strong> 9.2/10</p>
+                <p><strong>장점:</strong> 시내 중심 위치, 해변 및 산책로 도보 10분 거리</p>
+            </div>
+
+            <div class="hotel-card">
+                <div class="hotel-name">혼총 보마리조트 (2-3일차 숙박)</div>
+                <p><strong>위치:</strong> 나트랑 혼총 지역</p>
+                <p><strong>특징:</strong> 2023년 3월 신축 리조트로 깔끔하고 현대적인 시설</p>
+                <p><strong>장점:</strong> 
+                    <br>• 신축이라 깨끗함
+                    <br>• 시내와 가까워 접근성 좋음
+                    <br>• 조식 훌륭
+                    <br>• 수영장 시설 좋음 (다양한 깊이)
+                    <br>• 룸서비스 및 배달 서비스 편리
+                    <br>• 아담하고 예쁜 분위기로 커플에게 적합
+                </p>
+                <p><strong>부대시설:</strong> 수영장, 프라이빗 비치, 스파, 레스토랑</p>
+            </div>
+        </div>
+
+        <!-- 마사지 탭 -->
+        <div id="massage" class="tab-content">
+            <h2>💆 추천 마사지샵</h2>
+            
+            <div class="massage-card">
+                <div class="massage-name">망고 스파 & 네일 (Mango Spa & Nail)</div>
+                <p><strong>위치:</strong> 나트랑 시내</p>
+                <p><strong>특징:</strong> 깔끔하고 위생적인 시설, 한국인에게 인기 많은 마사지샵</p>
+                <p><strong>추천 서비스:</strong> 전신 마사지, 커플 마사지</p>
+                <p><strong>가격대:</strong> 60분 기준 약 20,000-30,000원</p>
+            </div>
+
+            <div class="massage-card">
+                <div class="massage-name">로얄 살롱 (Royal Salon)</div>
+                <p><strong>위치:</strong> 나트랑 시내</p>
+                <p><strong>특징:</strong> 고급스러운 분위기와 전문적인 서비스</p>
+                <p><strong>추천 서비스:</strong> 아로마 마사지, 핫스톤 마사지</p>
+                <p><strong>가격대:</strong> 60분 기준 약 25,000-35,000원</p>
+            </div>
+
+            <div class="massage-card">
+                <div class="massage-name">궁스파 (Gung Spa)</div>
+                <p><strong>위치:</strong> 나트랑 시내</p>
+                <p><strong>특징:</strong> 전통 베트남 마사지 전문, 합리적인 가격</p>
+                <p><strong>추천 서비스:</strong> 베트남 전통 마사지, 발 마사지</p>
+                <p><strong>가격대:</strong> 60분 기준 약 15,000-25,000원</p>
+            </div>
+
+            <div class="massage-card">
+                <div class="massage-name">보마리조트 스파</div>
+                <p><strong>위치:</strong> 혼총 보마리조트 내</p>
+                <p><strong>특징:</strong> 리조트 내 편리한 위치, 바다 전망과 함께 즐기는 스파</p>
+                <p><strong>추천 서비스:</strong> 커플 스파, 바디 트리트먼트</p>
+                <p><strong>가격대:</strong> 60분 기준 약 30,000-50,000원</p>
+            </div>
+
+            <p><strong>💡 마사지 이용 팁:</strong></p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>매일 마사지를 계획하셨으므로, 미리 예약하는 것이 좋습니다.</li>
+                <li>특히 인기 있는 곳은 예약이 필수입니다.</li>
+                <li>마사지 후에는 충분한 수분 섭취를 권장합니다.</li>
+                <li>팁은 서비스에 만족했을 경우 10-20% 정도가 적당합니다.</li>
+            </ul>
+        </div>
+
+        <!-- 베트남어 탭 -->
+        <div id="vietnamese" class="tab-content">
+            <h2>💬 베트남 필수 회화</h2>
+            
+            <div class="phrase-item">
+                <span class="korean">안녕하세요</span>
+                <span class="vietnamese">신 짜오 (Xin chào)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">감사합니다</span>
+                <span class="vietnamese">깜 언 (Cảm ơn)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">죄송합니다</span>
+                <span class="vietnamese">신 로이 (Xin lỗi)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">네 / 아니오</span>
+                <span class="vietnamese">야 / 콩 (Dạ / Không)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">얼마예요?</span>
+                <span class="vietnamese">바오 니에우 띠엔? (Bao nhiêu tiền?)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">깎아주세요</span>
+                <span class="vietnamese">팟 띠엔 (Bớt tiền)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">맛있어요</span>
+                <span class="vietnamese">응온 람 (Ngon lắm)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">화장실</span>
+                <span class="vietnamese">냐 베 씬 (Nhà vệ sinh)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">도와주세요</span>
+                <span class="vietnamese">쯧 또이 (Giúp tôi)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">계산해주세요</span>
+                <span class="vietnamese">띤 띠엔 (Tính tiền)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">물</span>
+                <span class="vietnamese">누억 (Nước)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">맥주</span>
+                <span class="vietnamese">비아 (Bia)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">커피</span>
+                <span class="vietnamese">까페 (Cà phê)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">쌀국수</span>
+                <span class="vietnamese">퍼 (Phở)</span>
+            </div>
+            
+            <div class="phrase-item">
+                <span class="korean">반미</span>
+                <span class="vietnamese">반미 (Bánh mì)</span>
+            </div>
+        </div>
+
+        <!-- 여행 팁 탭 -->
+        <div id="tips" class="tab-content">
+            <h2>💡 나트랑 여행 팁</h2>
+            
+            <div class="tip-item">
+                <h3>💱 환전</h3>
+                <p>한국에서 달러로 환전 후 베트남 현지에서 동으로 재환전하는 것이 유리합니다. 금은방에서 환전 시 환율이 좋은 경우가 많습니다.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>🚗 교통</h3>
+                <p>그랩(Grab) 앱을 이용하면 편리하고 안전하게 택시를 이용할 수 있습니다. 오토바이 택시도 이용 가능하지만 안전에 유의하세요.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>🌦️ 날씨</h3>
+                <p>8월은 나트랑의 우기이지만, 스콜성 소나기가 내리는 경우가 많고 금방 그칩니다. 우산이나 우비를 준비하는 것이 좋습니다.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>👕 복장</h3>
+                <p>습하고 더운 날씨이므로 통풍이 잘되는 시원한 옷차림이 좋습니다. 사원 방문 시에는 어깨와 무릎을 가리는 복장을 준비하세요.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>💰 팁 문화</h3>
+                <p>베트남은 팁 문화가 보편적이지 않지만, 서비스에 만족했다면 소정의 팁을 주는 것도 좋습니다.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>🛒 흥정</h3>
+                <p>시장이나 길거리 상점에서는 흥정이 가능합니다. 처음 부르는 가격의 50~70% 선에서 시작해보세요.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>💧 수돗물</h3>
+                <p>수돗물은 마시지 마세요. 생수를 구매하여 음용하세요.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>🍽️ 위생</h3>
+                <p>길거리 음식은 맛있지만, 위생에 유의하세요. 깨끗한 식당을 이용하는 것이 좋습니다.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>💆 마사지</h3>
+                <p>매일 마사지를 계획하셨으므로, 미리 예약하는 것이 좋습니다. 특히 인기 있는 곳은 예약이 필수입니다.</p>
+            </div>
+            
+            <div class="tip-item">
+                <h3>📱 인터넷</h3>
+                <p>공항에서 유심카드를 구매하거나, 포켓 와이파이를 대여하는 것이 편리합니다.</p>
+            </div>
+        </div>
+
+        <!-- 예산 탭 -->
+        <div id="budget" class="tab-content">
+            <h2>💰 예산 가이드 (2인 기준)</h2>
+            
+            <table class="budget-table">
+                <thead>
+                    <tr>
+                        <th>항목</th>
+                        <th>예상 비용</th>
+                        <th>비고</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>항공권</td>
+                        <td>750,000원</td>
+                        <td>확정 (왕복 2인)</td>
+                    </tr>
+                    <tr>
+                        <td>숙박 - 시내 호텔 (1박)</td>
+                        <td>50,000 - 100,000원</td>
+                        <td>아다마스 부티크 호텔 등</td>
+                    </tr>
+                    <tr>
+                        <td>숙박 - 혼총 보마리조트 (2박)</td>
+                        <td>200,000 - 300,000원</td>
+                        <td>조식 포함</td>
+                    </tr>
+                    <tr>
+                        <td>식비 (4일)</td>
+                        <td>200,000 - 400,000원</td>
+                        <td>1일 약 50,000-100,000원</td>
+                    </tr>
+                    <tr>
+                        <td>마사지 (3회)</td>
+                        <td>60,000 - 120,000원</td>
+                        <td>1회 약 20,000-40,000원</td>
+                    </tr>
+                    <tr>
+                        <td>교통비 (4일)</td>
+                        <td>40,000 - 80,000원</td>
+                        <td>그랩, 택시 이용</td>
+                    </tr>
+                    <tr>
+                        <td>관광지 입장료/액티비티</td>
+                        <td>50,000 - 100,000원</td>
+                        <td>빈원더스 등</td>
+                    </tr>
+                    <tr>
+                        <td>기타 (쇼핑, 비상금)</td>
+                        <td>500,000 - 1,000,000원</td>
+                        <td>기념품, 여유 자금</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr style="background: #e74c3c; color: white; font-weight: bold;">
+                        <td>총 예상 경비</td>
+                        <td>1,850,000 - 2,950,000원</td>
+                        <td>항공권 포함</td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <div style="background: #d4edda; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #28a745;">
+                <h3 style="color: #155724; margin-bottom: 10px;">💡 예산 결론</h3>
+                <p style="color: #155724; font-size: 1.1rem;">
+                    <strong>총 예산 4,000,000원 내에서 충분히 여유로운 여행이 가능합니다!</strong><br>
+                    남은 예산으로 더 고급스러운 식사나 쇼핑을 즐기실 수 있습니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 지도 탭 -->
+        <div id="map" class="tab-content">
+            <h2>🗺️ 나트랑 관광지 지도</h2>
+            
+            <div class="map-container">
+                <h3>나트랑 전체 여행 동선</h3>
+                <img src="nha_trang_overall_route_map.png" alt="나트랑 4박 5일 전체 여행 동선" style="width: 100%; max-width: 800px; border-radius: 10px; margin: 15px 0;">
+                
+                <h3 style="margin-top: 30px;">일차별 상세 동선</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0;">
+                    <div style="text-align: center;">
+                        <h4>2일차 - 시내 관광</h4>
+                        <img src="nha_trang_route_map_day2.png" alt="나트랑 2일차 관광 동선" style="width: 100%; border-radius: 10px;">
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <h4>3일차 - 섬 투어</h4>
+                        <img src="nha_trang_route_map_day3.png" alt="나트랑 3일차 섬 투어 동선" style="width: 100%; border-radius: 10px;">
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <h4>4일차 - 테마파크/자연</h4>
+                        <img src="nha_trang_route_map_day4.png" alt="나트랑 4일차 테마파크/자연 동선" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+                
+                <p><strong>주요 거리 정보:</strong></p>
+                <ul style="text-align: left; margin-top: 15px;">
+                    <li><strong>쩐푸 거리 (Trần Phú):</strong> 해변가 메인 도로, 대부분의 호텔과 레스토랑 위치</li>
+                    <li><strong>응우옌 티엔 탄 거리:</strong> 야시장과 쇼핑 지역</li>
+                    <li><strong>혼총 지역:</strong> 보마리조트가 위치한 곳, 시내에서 북쪽으로 약 4km</li>
+                    <li><strong>깜란 공항:</strong> 시내에서 남쪽으로 약 40km</li>
+                </ul>
+                
+                <div style="background: #fff3cd; padding: 15px; border-radius: 10px; margin-top: 20px; border-left: 4px solid #ffc107;">
+                    <h4 style="color: #856404;">🚗 도보 이동 가능 거리</h4>
+                    <p style="color: #856404;">
+                        • 시내 중심가 내 관광지들은 대부분 도보로 이동 가능<br>
+                        • 나트랑 대성당 ↔ 롱선사: 도보 약 15분<br>
+                        • 시내 ↔ 혼총 보마리조트: 택시/그랩 이용 (약 15분)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // 모든 탭 내용 숨기기
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 모든 탭 버튼 비활성화
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 선택된 탭 내용 보이기
+            document.getElementById(tabName).classList.add('active');
+            
+            // 선택된 탭 버튼 활성화
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
+
